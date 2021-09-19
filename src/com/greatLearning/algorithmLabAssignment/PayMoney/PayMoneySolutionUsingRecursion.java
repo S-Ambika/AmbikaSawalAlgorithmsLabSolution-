@@ -2,7 +2,13 @@ package com.greatLearning.algorithmLabAssignment.PayMoney;
 
 import java.util.Scanner;
 
-public class PayMoneySolution {
+/*
+ * PayMoney. processes thousands of transactions daily amounting to crores of Rupees. They
+also have a daily target that they must achieve. Given a list of transactions done by
+PayMoney and a daily target, your task is to determine at which transaction PayMoney
+achieves the same. If the target is not achievable, then display the target is not achieved
+ */
+public class PayMoneySolutionUsingRecursion {
 
 	int i = -1;
 	int arr_size, loop_check;
@@ -11,17 +17,21 @@ public class PayMoneySolution {
 	int transactionArr[];
 	Scanner sc_input = new Scanner(System.in);
 
+	/*
+	 * Inserting values in array from User
+	 */
 	public void insertValues(int size) {
 		for (int i = 0; i < size; i++) {
 			System.out.print("Enter element at position " + i + "-  ");
-			
-			//if(sc_input.nextInt()>0) {
+
 			transactionArr[i] = sc_input.nextInt();
-			//}
-			
+
 		}
 	}
 
+	/*
+	 * Printing values from array
+	 */
 	public void printValues(int size) {
 		for (int i = 0; i < size; i++) {
 			System.out.println("Value at position " + i + "is:" + transactionArr[i]);
@@ -29,6 +39,9 @@ public class PayMoneySolution {
 		System.out.println();
 	}
 
+	/*
+	 * implementing solution for Currency Denomination Problem
+	 */
 	private void SolutionImplementation() {
 		System.out.println("Enter the size of transaction array : ");
 
@@ -43,18 +56,18 @@ public class PayMoneySolution {
 		System.out.println("Enter the total no of targets that needs to be achieved : ");
 
 		int target_size = sc_input.nextInt();
-		while (loop_check < target_size) {
+		while (loop_check < target_size) { // till no. of target are defined
 			System.out.println("Enter the value of target : ");
 
 			int target_value = sc_input.nextInt();
-			
-if(target_value>0) {
-			pairwiseSum(transactionArr, 0, arr_size, target_value, num, transactionArr[0], loop_check + 1);
-}
-else {
-	System.out.println("Enter some valid value");
-
-}
+			/*
+			 * check for 0 & negative values
+			 */
+			if (target_value > 0) {
+				pairwiseSum(transactionArr, 0, arr_size, target_value, num, transactionArr[0], loop_check + 1);
+			} else {
+				System.out.println("Enter some valid value");
+			}
 			loop_check++;
 		}
 
@@ -62,13 +75,14 @@ else {
 
 	void pairwiseSum(int arr[], int i, int n, int val, int num, int sum, int target_count) {
 
-		
-		
 		if (i >= n - 1) {
 			System.out.println("Given target is not achieved");
 
 		} else {
 			try {
+				/*
+				 * in case target value is equal to value at array[0] position
+				 */
 				if (val <= arr[0]) {
 					System.out.println("Target " + target_count + " is achieved after : " + 1 + " transaction");
 
@@ -85,6 +99,9 @@ else {
 
 					} else {
 						num++;
+						/*
+						 * recursion applied for next values
+						 */
 						pairwiseSum(arr, i + 1, n, val, num, sum, target_count);
 					}
 				}
@@ -99,7 +116,7 @@ else {
 
 	public static void main(String args[]) {
 
-		PayMoneySolution paymoneysolution = new PayMoneySolution();
+		PayMoneySolutionUsingRecursion paymoneysolution = new PayMoneySolutionUsingRecursion();
 
 		paymoneysolution.SolutionImplementation();
 
