@@ -1,4 +1,4 @@
-package com.greatLearning.algorithmLabPayMoney;
+package com.greatLearning.algorithmLabAssignment.PayMoney;
 
 import java.util.Scanner;
 
@@ -14,7 +14,11 @@ public class PayMoneySolution {
 	public void insertValues(int size) {
 		for (int i = 0; i < size; i++) {
 			System.out.print("Enter element at position " + i + "-  ");
+			
+			//if(sc_input.nextInt()>0) {
 			transactionArr[i] = sc_input.nextInt();
+			//}
+			
 		}
 	}
 
@@ -40,16 +44,17 @@ public class PayMoneySolution {
 
 		int target_size = sc_input.nextInt();
 		while (loop_check < target_size) {
-			// for(int i=0;i<target_size;i++) {
 			System.out.println("Enter the value of target : ");
 
 			int target_value = sc_input.nextInt();
-			// System.out.println("loop : "+loop_check);
-
+			
+if(target_value>0) {
 			pairwiseSum(transactionArr, 0, arr_size, target_value, num, transactionArr[0], loop_check + 1);
-//			int res=checkValueStatus(transactionArr[0],target_value,0);
-			// }
-			// num++;
+}
+else {
+	System.out.println("Enter some valid value");
+
+}
 			loop_check++;
 		}
 
@@ -57,33 +62,19 @@ public class PayMoneySolution {
 
 	void pairwiseSum(int arr[], int i, int n, int val, int num, int sum, int target_count) {
 
-//		num=num+1;
-//		System.out.println(" val of i : "+i);
-//		System.out.println(" val of num : "+num);
-
+		
+		
 		if (i >= n - 1) {
 			System.out.println("Given target is not achieved");
-			// return 0;
 
-		}
-
-		else {
-
+		} else {
 			try {
 				if (val <= arr[0]) {
-
 					System.out.println("Target " + target_count + " is achieved after : " + 1 + " transaction");
-					// return 2;
 
 				} else {
 
-					// System.out.println(" val of prev : " + sum + ": next : " + arr[i + 1]);
-
 					sum = sum + arr[i + 1];
-					// System.out.println(" val inside sum : " + sum );
-//				System.out.println("^^^^^^^^^^ val inside i : " + i );
-
-//				num = num + 2;
 
 					if (sum > val) {
 
@@ -93,12 +84,6 @@ public class PayMoneySolution {
 						System.out.println("Target " + target_count + " is achieved after : " + num + " transactions");
 
 					} else {
-//					num=num+1;			
-//					num=num+1;
-
-//					System.out.println("last val of i : "+i);
-//					System.out.println("last val of num : "+num);
-//					num=num+1;
 						num++;
 						pairwiseSum(arr, i + 1, n, val, num, sum, target_count);
 					}
@@ -107,11 +92,7 @@ public class PayMoneySolution {
 				System.out.println("exc : " + e.getMessage());
 
 			}
-			// }
 
-//				System.out.print(sum + " ");
-
-//				System.out.println(" not Achieved");
 		}
 
 	}
