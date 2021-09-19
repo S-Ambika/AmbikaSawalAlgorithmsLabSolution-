@@ -40,7 +40,7 @@ public class PayMoneySolutionUsingRecursion {
 	}
 
 	/*
-	 * implementing solution for Currency Denomination Problem
+	 * implementing solution for PayuMoney Problem
 	 */
 	private void SolutionImplementation() {
 		System.out.println("Enter the size of transaction array : ");
