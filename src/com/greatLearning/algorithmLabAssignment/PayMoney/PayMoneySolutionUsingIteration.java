@@ -78,7 +78,6 @@ public class PayMoneySolutionUsingIteration {
 		int sum = arr[0];
 		for (int i = 0; i + 1 < arr_size; i++) {
 			sum = sum + arr[i + 1];
-			System.out.print(sum + " ");
 			/*
 			 * Checking here to find whether target will be achieved or not
 			 */
