@@ -20,9 +20,7 @@ public class CurrencyDenominations {
 	public void insertValues(int size) {
 		for (int i = 0; i < size; i++) {
 			System.out.print("Enter element at position " + i + "-  ");
-
 			notesArr[i] = sc_input.nextInt();
-
 		}
 	}
 
@@ -82,12 +80,10 @@ public class CurrencyDenominations {
 					amt = amt - notesCounter[i] * notesArr[i];
 				}
 			}
-
 			if (amt > 0) {
-
 				System.out.println("Finding minimum no. of notes is NOT possible with this combinations");
-
-			} else {
+				}
+			else {
 				// Print min combination of notes
 				System.out.println("Your payment approach in order to give min no of notes will be ->");
 				for (int i = 0; i < notesCounter.length; i++) {

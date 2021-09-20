@@ -8,12 +8,12 @@ also have a daily target that they must achieve. Given a list of transactions do
 PayMoney and a daily target, your task is to determine at which transaction PayMoney
 achieves the same. If the target is not achievable, then display the target is not achieved
  */
-public class PayMoneySolutionUsingRecursion {
+public class PayMoneySolutionUsingIteration {
 
 	int i = -1;
 	int arr_size, loop_check;
 	boolean flag;
-	int num = 1;
+	int num_of_txn;
 	int transactionArr[];
 	Scanner sc_input = new Scanner(System.in);
 
@@ -25,7 +25,6 @@ public class PayMoneySolutionUsingRecursion {
 			System.out.print("Enter element at position " + i + "-  ");
 
 			transactionArr[i] = sc_input.nextInt();
-
 		}
 	}
 
@@ -44,17 +43,13 @@ public class PayMoneySolutionUsingRecursion {
 	 */
 	private void SolutionImplementation() {
 		System.out.println("Enter the size of transaction array : ");
-
 		arr_size = sc_input.nextInt();
-
 		transactionArr = new int[arr_size];
-
 		System.out.println("Enter the values of array : ");
 		insertValues(arr_size);
 		printValues(arr_size);
 
 		System.out.println("Enter the total no of targets that needs to be achieved : ");
-
 		int target_size = sc_input.nextInt();
 		/*
 		 * continue to ask for target value till num of targets are mentioned
@@ -67,7 +62,7 @@ public class PayMoneySolutionUsingRecursion {
 			 * check for 0 & negative values
 			 */
 			if (target_value > 0) {
-				pairwiseSum(transactionArr, 0, arr_size, target_value, num, transactionArr[0], loop_check + 1);
+				pairwiseSum(transactionArr, arr_size, target_value, loop_check + 1);
 			} else {
 				System.out.println("Enter some valid value");
 			}
@@ -77,45 +72,36 @@ public class PayMoneySolutionUsingRecursion {
 	}
 
 	/*
-	 * adding adjacent elements and checking whether target is achieved or not using Recursion
+	 * adding adjacent elements and checking whether target is achieved or not
 	 */
-	void pairwiseSum(int arr[], int i, int size, int val, int num, int sum, int target_count) {
-
-		if (i >= size - 1) {
-			System.out.println("Given target is not achieved");
-
-		} else {
+	void pairwiseSum(int arr[], int arr_size, int target_value, int target_count) {
+		int sum = arr[0];
+		for (int i = 0; i + 1 < arr_size; i++) {
+			sum = sum + arr[i + 1];
+			System.out.print(sum + " ");
 			/*
-			 * in case target value is equal to value at array[0] position
+			 * Checking here to find whether target will be achieved or not
 			 */
-			if (val <= arr[0]) {
-				System.out.println("Target " + target_count + " is achieved after : " + 1 + " transaction");
-
+			if (sum >= target_value) {
+				num_of_txn = i + 1;
+				flag = true;
+				break;
 			} else {
-				sum = sum + arr[i + 1];
-				if (sum > val) {
-					num = i + 1;
-					num++;
-					System.out.println("Target " + target_count + " is achieved after : " + num + " transactions");
-				} else {
-					num++;
-					/*
-					 * recursion applied for next values
-					 */
-					pairwiseSum(arr, i + 1, size, val, num, sum, target_count);
-				}
+				flag = false;
 			}
-
 		}
+		if (flag)
+			System.out.println("Target " + target_count + " is achieved after " + num_of_txn + " transactions");
+		else
+			System.out.println("Given target is not achieved");
 
 	}
 
 	public static void main(String args[]) {
 
-		PayMoneySolutionUsingRecursion paymoneysolution = new PayMoneySolutionUsingRecursion();
+		PayMoneySolutionUsingIteration paymoneysolution = new PayMoneySolutionUsingIteration();
 
 		paymoneysolution.SolutionImplementation();
 
 	}
-
 }
