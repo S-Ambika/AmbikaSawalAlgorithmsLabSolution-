@@ -55,7 +55,7 @@ public class CurrencyDenominations {
 		 * sorting array using MergeSort implemented in different Helper class calling
 		 * method by creating object of Helper class
 		 */
-		MergeSortHeper mergesortHeper = new MergeSortHeper();
+		MergeSortHelper mergesortHeper = new MergeSortHelper();
 		notesArr = mergesortHeper.sortInDescending(notesArr, 0, arr_size - 1);
 		System.out.println("Array sorted in Descending order : ");
 		printValues(arr_size);

@@ -3,7 +3,7 @@ package com.greatLearning.algorithmLabAssignment.CurrencyDenomination;
 /*
  * Helper class to implement merge sorting
  */
-public class MergeSortHeper {
+public class MergeSortHelper {
 
 	void merging(int[] num, int left, int main, int right) {
 		// finding size of two sub arrays
