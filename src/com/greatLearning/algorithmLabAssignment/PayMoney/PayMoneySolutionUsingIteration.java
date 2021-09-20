@@ -33,7 +33,7 @@ public class PayMoneySolutionUsingIteration {
 	 */
 	public void printValues(int size) {
 		for (int i = 0; i < size; i++) {
-			System.out.print(transactionArr[i]+" ");
+			System.out.print(transactionArr[i] + " ");
 		}
 		System.out.println();
 	}

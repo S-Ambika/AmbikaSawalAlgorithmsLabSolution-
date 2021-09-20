@@ -23,9 +23,7 @@ public class PayMoneySolutionUsingRecursion {
 	public void insertValues(int size) {
 		for (int i = 0; i < size; i++) {
 			System.out.print("Enter element at position " + i + "-  ");
-
 			transactionArr[i] = sc_input.nextInt();
-
 		}
 	}
 
@@ -34,7 +32,7 @@ public class PayMoneySolutionUsingRecursion {
 	 */
 	public void printValues(int size) {
 		for (int i = 0; i < size; i++) {
-			System.out.print(transactionArr[i]+" ");
+			System.out.print(transactionArr[i] + " ");
 		}
 		System.out.println();
 	}
@@ -44,24 +42,18 @@ public class PayMoneySolutionUsingRecursion {
 	 */
 	private void SolutionImplementation() {
 		System.out.println("Enter the size of transaction array : ");
-
 		arr_size = sc_input.nextInt();
-
 		transactionArr = new int[arr_size];
-
 		System.out.println("Enter the values of array : ");
 		insertValues(arr_size);
 		printValues(arr_size);
-
 		System.out.println("Enter the total no of targets that needs to be achieved : ");
-
 		int target_size = sc_input.nextInt();
 		/*
 		 * continue to ask for target value till num of targets are mentioned
 		 */
 		while (loop_check < target_size) {
 			System.out.println("Enter the value of target : ");
-
 			int target_value = sc_input.nextInt();
 			/*
 			 * check for 0 & negative values
@@ -73,24 +65,22 @@ public class PayMoneySolutionUsingRecursion {
 			}
 			loop_check++;
 		}
-
 	}
 
 	/*
-	 * adding adjacent elements and checking whether target is achieved or not using Recursion
+	 * adding adjacent elements and checking whether target is achieved or not using
+	 * Recursion
 	 */
 	void pairwiseSum(int arr[], int i, int size, int val, int num, int sum, int target_count) {
 
 		if (i >= size - 1) {
 			System.out.println("Given target is not achieved");
-
 		} else {
 			/*
 			 * in case target value is equal to value at array[0] position
 			 */
 			if (val <= arr[0]) {
 				System.out.println("Target " + target_count + " is achieved after : " + 1 + " transaction");
-
 			} else {
 				sum = sum + arr[i + 1];
 				if (sum > val) {
@@ -105,9 +95,7 @@ public class PayMoneySolutionUsingRecursion {
 					pairwiseSum(arr, i + 1, size, val, num, sum, target_count);
 				}
 			}
-
 		}
-
 	}
 
 	public static void main(String args[]) {

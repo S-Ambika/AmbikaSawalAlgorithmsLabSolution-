@@ -44,10 +44,8 @@ public class CurrencyDenominations {
 		 * taking size of array from user
 		 */
 		arr_size = sc_input.nextInt();
-
 		notesArr = new int[arr_size]; // providing size to array
 		notesCounter = new int[arr_size]; // keeping counter array size same as main array
-
 		System.out.println("Enter the values of array : ");
 		insertValues(arr_size);
 		printValues(arr_size);
@@ -59,7 +57,6 @@ public class CurrencyDenominations {
 		notesArr = mergesortHeper.sortInDescending(notesArr, 0, arr_size - 1);
 		System.out.println("Array sorted in Descending order : ");
 		printValues(arr_size);
-
 		System.out.println("Enter input of the amount that you want to pay : ");
 		int amt = sc_input.nextInt();
 		/*
@@ -82,8 +79,7 @@ public class CurrencyDenominations {
 			}
 			if (amt > 0) {
 				System.out.println("Finding minimum no. of notes is NOT possible with this combinations");
-				}
-			else {
+			} else {
 				// Print min combination of notes
 				System.out.println("Your payment approach in order to give min no of notes will be ->");
 				for (int i = 0; i < notesCounter.length; i++) {
